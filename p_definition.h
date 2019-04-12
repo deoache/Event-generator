@@ -1,12 +1,12 @@
 struct particle
 {
-  float m;           //Particle mass
-  float q;           //Electric charge
-  float s;           //Spin
-  float E;           //Energy
+  float mass;           //Particle mass
+  float charge;           //Electric charge
+  float spin;           //Spin
+  float energy;           //Energy
   };
 
-//Masses in GeV/c^2, electric charges in e units
+//Masses in GeV, electric charges in e- units
 //Leptons
 particle ep = {5e-4, +1, 0.5, 0};
 particle em = {5e-4, -1, 0.5, 0};
