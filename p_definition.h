@@ -1,8 +1,11 @@
+#include <map>
+#include <iostream>
+
 struct particle
 {
-  float mass;           //Particle mass
+  float mass;             //Particle mass
   float charge;           //Electric charge
-  float spin;           //Spin
+  float spin;             //Spin
   float energy;           //Energy
   };
 
@@ -51,3 +54,14 @@ particle g = {0, 0, 1, 0}; //Gluon
 particle wp = {0.0804, +1, 1, 0}; //W+
 particle wm = {0.0804, -1, 1, 0}; //W-
 particle z = {0.0919, 0, 1, 0};   //Z
+
+particle map(std::string p_name){
+  std::map<std::string,particle> p_map;
+  p_map["ep"] = ep;
+  p_map["em"] = em;
+  p_map["mup"] = mup;
+  p_map["mum"] = mum;
+  //FALTA EL RESTO DE PARTICULAS
+  return p_map[p_name];
+}
+
