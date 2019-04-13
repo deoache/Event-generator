@@ -1,57 +1,22 @@
-#include "particle_content.h"
-#include "states_constructor.h"
+#include "particle_content.h"       //Particle definitions
+#include "states_constructor.h"     //Returns an initial and final state vector named state_in and state_out
+#include "conservation.h"           //Checks the conservation of spin and charge and E1 + E2 > m1 + m2 + m3 +...+
 #include <iostream>
 #include <vector>
-#include <typeinfo>
 #include <string>
 
-float E1{6500};
-float E2{6500};
+float E1{6500};  //Beam 1 energy
+float E2{6500};  //Beam 2 energy
 
 int main(){
   
   states();
-
-  float sum_spin1{0};
-  float sum_spin2{0};
-
-  for(int i = 0; i < 2; i++){
-    sum_spin1 += map(state_in[i]).spin;
-  }
-
-  for(int i = 0; i < Nparticles; i++){
-    sum_spin2 += map(state_out[i]).spin;
-  }
-
-  if(sum_spin1 != sum_spin2){
-    std::cout << "The process don't conserve spin" << std::endl;
-    exit(0);
-  }
-
-  //std::cout << map(str).mass << std::endl;
+  map(state_in[0]).energy = E1;
+  map(state_in[1]).energy = E2;
   
-  /*int Nf;
-
-  std::cout << "Number of particles in the final state\n";
-  std::cin >> Nf;
-
-  state_in.resize(2);
-  state_out.resize(Nf);
-
-  std::cout << "Particles in the initial state\n";
-
-  for(int i = 0; i < 2; i++){
-    std::cin >> state_in[i];
-  }
-
-  std::cout << "Particles in the final state\n";
-  
-  for(int i = 0; i < Nf; i++){
-    std::cin >> state_out[i];
-  }
-
-  for(int i = 0; i < Nf; i++){
-  std::cout << map(state_out[i]).mass << std::endl;}*/
+  spin_check();
+  charge_check();
+  kin_check(E1, E2);
   
 }
 
