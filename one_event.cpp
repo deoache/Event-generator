@@ -24,12 +24,8 @@ int main(){
   }
 
   if(sum_spin1 != sum_spin2){
-    std::cout << "The process is not possible" << std::endl;
+    std::cout << "The process don't conserve spin" << std::endl;
     exit(0);
-  }
-
-  else{
-    std::cout << "The process is possible" << std::endl;
   }
 
   //std::cout << map(str).mass << std::endl;
