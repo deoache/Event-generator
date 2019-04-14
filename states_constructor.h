@@ -24,6 +24,8 @@ void states(){
 
   std::cout << "Higgs bosson is: h\n";
 
+  std::cout << "The states are written as: particle1 particle2 particle3 ...\n";
+
   //Enter the states
   std::cout << "Initial state\n";
   std::getline(std::cin, state1);
@@ -80,5 +82,20 @@ void states(){
       state_out[i] += state2[ii];
       count += 1;
 }
+  }
+
+  //Prevents for type errors in the states
+  for(int i = 0; i < 2; i++){
+    if(map(state_in[i]).mass == 0 && map(state_in[i]).spin == 0 && map(state_in[i]).charge == 0){
+      std::cout << "One or more particles in the initial state is not well defined" << std::endl;
+      exit(0);
+    }
+  }
+
+  for(int i = 0; i < Nparticles; i++){
+    if(map(state_out[i]).mass == 0 && map(state_out[i]).spin == 0 && map(state_out[i]).charge == 0){
+      std::cout << "One or more particles in the final state is not well defined" << std::endl;
+      exit(0);
+    }
   }
 }

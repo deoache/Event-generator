@@ -21,5 +21,7 @@ int main(){
 
   pi_1.energy = E1;                   //Initializes the energy of initial particle 1
   pi_2.energy = E2;                   //Initializes the energy of initial particle 2
+  
+  return 0;
 }
 

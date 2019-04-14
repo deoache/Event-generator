@@ -56,9 +56,14 @@ particle wp{0.0804, +1, 1, 0}; //W+
 particle wm{0.0804, -1, 1, 0}; //W-
 particle z{0.0919, 0, 1, 0};   //Z
 
+particle q[6]{u,d,c,s,t,b};          //Quark vector
+particle qb[6]{ub,db,cb,sb,tb,bb};   //Antiquark vector
+
 //Function to map a string name into a variable name
 particle map(std::string p_name){
+  
   std::map<std::string,particle> p_map;
+  
   p_map["e+"] = ep;
   p_map["e-"] = em;
   p_map["mu+"] = mup;
@@ -91,6 +96,9 @@ particle map(std::string p_name){
   p_map["ve"] = ve;
   p_map["vu"] = vu;
   p_map["vt"] = vt;
+
+  p_map["q"] = q;
+  p_map["q~"] = qb;
   
   return p_map[p_name];
 }
